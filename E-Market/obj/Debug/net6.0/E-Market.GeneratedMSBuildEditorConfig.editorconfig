@@ -11,7 +11,7 @@ build_property.RootNamespace = E_Market
 build_property.ProjectDir = C:\Users\HP\source\repos\E-Market\E-Market\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\HP\source\repos\E-Market\E-Market
 build_property._RazorSourceGeneratorDebug = 
 
