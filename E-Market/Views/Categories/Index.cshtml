@@ -1,0 +1,12 @@
+﻿@model List<E_Market.Core.Application.ViewModel.CategoriesViewModel>;
+
+
+
+@foreach (var item in Model)
+{
+    <h1>
+        @item.id
+        @item.categoriesName
+        @item.categoriesDescrition
+    </h1>
+}

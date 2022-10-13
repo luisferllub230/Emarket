@@ -1,4 +1,6 @@
 ﻿using E_market.Infrastruture.Persistence.Context;
+using E_market.Infrastruture.Persistence.Repositories;
+using E_Market.Core.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +31,8 @@ namespace E_Market.Core.Application
             #endregion
 
             #region repositories
-            //services.AddTransient<IPokemonRepository, PokemonRepository>();
-            //services.AddTransient<IPokemonRegionRepository, PokemonRegionRepository>();
+            services.AddTransient<IUsersRepositories, UsersRepositories>();
+            services.AddTransient<ICategoriesRepositories, CategoriesRepositories>();
             //services.AddTransient<IPokemonTypesRepository, PokemonsTypesRepositore>();
             #endregion
         }

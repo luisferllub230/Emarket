@@ -13,9 +13,9 @@ namespace E_market.Infrastruture.Persistence.Context
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) {}
 
         //property 
-        public DbSet<Users>? Users { get; set; }
-        public DbSet<Comercial>? Comercial { get; set; }
-        public DbSet<Categories>? Categories { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Comercial> Comercial { get; set; }
+        public DbSet<Categories> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
