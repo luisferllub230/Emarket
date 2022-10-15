@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace E_Market.Core.Application.Interfaces.Repositories
 {
-    public interface ICategoriesRepositories
+    public interface ICategoriesRepositories : IGenericRepositories<Categories>
     {
-        Task addCategories(Categories ca);
-        Task updateCategories(Categories ca);
-        Task deleteCategories(Categories ca);
-        Task<List<Categories>> getAllCategories();
-        Task<Categories> getOneCategories(int id);
+
     }
 }

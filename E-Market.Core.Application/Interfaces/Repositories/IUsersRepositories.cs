@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 
 namespace E_Market.Core.Application.Interfaces.Repositories
 {
-    public interface IUsersRepositories
+    public interface IUsersRepositories : IGenericRepositories<Users>
     {
-        Task addUsers(Users u);
-        Task updateUsers(Users u);
-        Task deleteUsers(Users u);
-        Task<List<Users>> getAllUsers();
-        Task<Users> getOneUsers(int id);
     }
 }

@@ -7,5 +7,9 @@ using System.Threading.Tasks;
 
 namespace E_Market.Core.Application.Interfaces.Services
 {
-    public interface ICategoriesServices : IGenericServices<CategoriesViewModel>{}
+    public interface IGenericServices<Entity> where Entity : class
+    {
+        Task Add(Entity cavm);
+        Task<List<Entity>> GetAllCategories();
+    }
 }

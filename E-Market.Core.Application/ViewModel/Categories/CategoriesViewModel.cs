@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Market.Core.Application.ViewModel
+namespace E_Market.Core.Application.ViewModel.Categories
 {
     public class CategoriesViewModel
     {
@@ -13,6 +13,7 @@ namespace E_Market.Core.Application.ViewModel
         public string? categoriesName { get; set; }
         public string? categoriesDescrition { get; set; }
 
-        public ICollection<Comercial>? comercials { get; set; }
+        public int comercialCount { get; set; }
+        public int userComercialCount { get; set; }
     }
 }

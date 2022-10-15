@@ -16,4 +16,8 @@
     <ProjectReference Include="..\E-Market.Core.Domain\E-Market.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModel\Comercial\" />
+  </ItemGroup>
+
 </Project>

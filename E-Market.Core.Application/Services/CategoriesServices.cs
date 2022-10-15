@@ -1,6 +1,6 @@
 ﻿using E_Market.Core.Application.Interfaces.Repositories;
 using E_Market.Core.Application.Interfaces.Services;
-using E_Market.Core.Application.ViewModel;
+using E_Market.Core.Application.ViewModel.Categories;
 using E_Market.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -24,17 +24,16 @@ namespace E_Market.Core.Application.Services
             Categories ca = new();
             ca.categoriesName = cavm.categoriesName;
             ca.categoriesDescrition = cavm.categoriesDescrition;
-            await _ca.addCategories(ca);
+            await _ca.add(ca);
         }
 
         public async Task<List<CategoriesViewModel>> GetAllCategories()
         {
-            var caList = await _ca.getAllCategories();
+            var caList = await _ca.getAll();
             return caList.Select(c => new CategoriesViewModel {
                 id = c.id,
                 categoriesName = c.categoriesName,
-                categoriesDescrition = c.categoriesDescrition,
-                comercials = c.comercials
+                categoriesDescrition = c.categoriesDescrition
             }).ToList();
         }
     }

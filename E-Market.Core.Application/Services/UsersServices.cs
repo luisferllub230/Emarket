@@ -1,6 +1,7 @@
 ﻿using E_Market.Core.Application.Interfaces.Repositories;
 using E_Market.Core.Application.Interfaces.Services;
-using E_Market.Core.Application.ViewModel;
+using E_Market.Core.Application.ViewModel.Categories;
+using E_Market.Core.Application.ViewModel.Users;
 using E_Market.Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,12 @@ namespace E_Market.Core.Application.Services
             u.UserEmail = uvm.UserEmail;
             u.UsersPhone = uvm.UsersPhone;
             u.UsersPasswork = uvm.UsersPasswork;
-            await _user.addUsers(u);
+            await _user.add(u);
         }
 
-        
+        public Task<List<UsersViewModel>> GetAllCategories()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

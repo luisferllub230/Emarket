@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Market.Core.Application.ViewModel
+namespace E_Market.Core.Application.ViewModel.Users
 {
     public class UsersViewModel
     {
