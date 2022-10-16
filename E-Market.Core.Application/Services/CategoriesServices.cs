@@ -27,13 +27,15 @@ namespace E_Market.Core.Application.Services
             await _ca.add(ca);
         }
 
-        public async Task<List<CategoriesViewModel>> GetAllCategories()
+        public async Task<List<CategoriesViewModel>> GetAll()
         {
-            var caList = await _ca.getAll();
+            var caList = await _ca.getAllByInclude(new List<string> { "comercials" });
             return caList.Select(c => new CategoriesViewModel {
                 id = c.id,
                 categoriesName = c.categoriesName,
-                categoriesDescrition = c.categoriesDescrition
+                categoriesDescrition = c.categoriesDescrition,
+                comercialCount = c.comercials.Count(),
+                comercials = c.comercials,
             }).ToList();
         }
     }

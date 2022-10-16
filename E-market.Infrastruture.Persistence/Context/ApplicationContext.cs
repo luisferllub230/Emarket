@@ -27,26 +27,26 @@ namespace E_market.Infrastruture.Persistence.Context
             #endregion
 
             //fluent API primary key 
-            #region primaryKey
-            modelBuilder.Entity<Users>().HasKey(u => u.id);
-            modelBuilder.Entity<Comercial>().HasKey(c => c.id);
-            modelBuilder.Entity<Categories>().HasKey(ca => ca.id);
-            #endregion
+            //#region primaryKey
+            //modelBuilder.Entity<Users>().HasKey(u => u.id);
+            //modelBuilder.Entity<Comercial>().HasKey(c => c.id);
+            //modelBuilder.Entity<Categories>().HasKey(ca => ca.id);
+            //#endregion
 
             //fluent API relationship
-            #region relationship
-            modelBuilder.Entity<Users>()
-                .HasMany<Comercial>(u => u.comercials)
-                .WithOne(u => u.comercialUsers)
-                .HasForeignKey(u => u.comercialUsersID)
-                .OnDelete(DeleteBehavior.Cascade);
+            //#region relationship
+            //modelBuilder.Entity<Users>()
+            //    .HasMany<Comercial>(u => u.comercials)
+            //    .WithOne(u => u.comercialUsers)
+            //    .HasForeignKey(u => u.comercialUsersID)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Categories>()
-                .HasMany<Comercial>(u => u.comercials)
-                .WithOne(u => u.comercialCategories)
-                .HasForeignKey(u => u.comercialCategoriesID)
-                .OnDelete(DeleteBehavior.Cascade);
-            #endregion
+            //modelBuilder.Entity<Categories>()
+            //    .HasMany<Comercial>(u => u.comercials)
+            //    .WithOne(u => u.comercialCategories)
+            //    .HasForeignKey(u => u.comercialCategoriesID)
+            //    .OnDelete(DeleteBehavior.Cascade);
+            //#endregion
 
             //flued API property configuration
             #region "property configuration"

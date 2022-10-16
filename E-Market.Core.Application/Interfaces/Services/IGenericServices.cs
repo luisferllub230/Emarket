@@ -10,6 +10,6 @@ namespace E_Market.Core.Application.Interfaces.Services
     public interface IGenericServices<Entity> where Entity : class
     {
         Task Add(Entity cavm);
-        Task<List<Entity>> GetAllCategories();
+        Task<List<Entity>> GetAll();
     }
 }

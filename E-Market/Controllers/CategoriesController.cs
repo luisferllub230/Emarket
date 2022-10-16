@@ -15,7 +15,7 @@ namespace E_Market.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View( await _ca.GetAllCategories());
+            return View( await _ca.GetAll());
         }
     }
 }

@@ -14,6 +14,6 @@ namespace E_Market.Core.Application.ViewModel.Categories
         public string? categoriesDescrition { get; set; }
 
         public int comercialCount { get; set; }
-        public int userComercialCount { get; set; }
+        public virtual ICollection<Comercial> comercials { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace E_Market.Core.Application.Services
             await _user.add(u);
         }
 
-        public Task<List<UsersViewModel>> GetAllCategories()
+        public Task<List<UsersViewModel>> GetAll()
         {
             throw new NotImplementedException();
         }

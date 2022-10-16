@@ -13,5 +13,6 @@ namespace E_Market.Core.Application.Interfaces.Repositories
         Task<List<Entity>> getAll();
         Task<Entity> getOne(int id);
         Task update(Entity entity);
+        Task<List<Entity>> getAllByInclude(List<string> properties);
     }
 }
