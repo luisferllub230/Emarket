@@ -32,7 +32,32 @@ namespace E_Market.Core.Application.Services
             await _user.add(u);
         }
 
+        public Task Add(SaveUsersViewModel cavm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Delete(SaveUsersViewModel cavm)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<UsersViewModel>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<SaveUsersViewModel> GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(SaveUsersViewModel cavm)
         {
             throw new NotImplementedException();
         }

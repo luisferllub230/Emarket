@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace E_Market.Core.Application.Interfaces.Services
 {
-    public interface IGenericServices<Entity> where Entity : class
+    public interface IGenericServices<Entity,ViewModel> 
+        where Entity : class
+        where ViewModel : class
     {
-        Task Add(Entity cavm);
+        Task Add(ViewModel cavm);
+        Task Update(ViewModel cavm);
         Task<List<Entity>> GetAll();
+        Task<ViewModel> GetById(int id);
+        Task Delete(ViewModel cavm);
     }
 }

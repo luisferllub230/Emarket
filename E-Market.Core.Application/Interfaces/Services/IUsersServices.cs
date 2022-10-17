@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace E_Market.Core.Application.Interfaces.Services
 {
-    public interface IUsersServices : IGenericServices<UsersViewModel>{}
+    public interface IUsersServices : IGenericServices<UsersViewModel, SaveUsersViewModel>{}
 }

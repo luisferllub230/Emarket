@@ -1,0 +1,33 @@
+﻿@model E_Market.Core.Application.ViewModel.Categories.SaveCategoriesViewModel;
+@{
+}
+
+
+
+
+
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-10">
+        <div class="card bg-dark border border-5 border-danger">
+            <div class="card-body">
+                <div class="card-title mt-2 mb-4">
+                    <h4 class="text-center">Do you want to delect this Category?</h4>
+                </div>
+                <div class="">
+                    <ul>
+                        <li>ID: @Model.id</li>
+                        <li>Name: @Model.categoriesName</li>
+                        <li>Description: @Model.categoriesDescrition</li>
+                    </ul>
+                </div>
+                <div>
+                    <form method="post" asp-controller="Categories" asp-action="DeletePost">
+                        <input type="hidden" asp-for="id" class="form-control" />
+                        <button type="submit" class="btn btn-outline-danger">Delete <i class="bi bi-trash"></i></button>
+                        <a class="btn btn-outline-info" asp-controller="Categories" asp-action="Index">go back <i class="bi bi-arrow-left-square"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

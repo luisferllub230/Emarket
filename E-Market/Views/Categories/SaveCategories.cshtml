@@ -1,0 +1,37 @@
+﻿@model E_Market.Core.Application.ViewModel.Categories.SaveCategoriesViewModel;
+@{
+    bool validator = Model.id == 0 ? true : false; // true Create, flase edit
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-6">
+        <div class="card bg-dark border border-5 @(validator ? "border-success" : "border-warning")">
+            <div class="card-body">
+                <div class="card-title mt-2 mb-4">
+                    <h4 class="text-center">@(validator ? "Create new Categories" : "Edit "+Model.categoriesName+" " )</h4>
+                </div>
+                <div class="">
+                    <form method="post" asp-controller="Categories" asp-action="@(validator ? "Create" : "Edit")">
+
+                        <input type="hidden" asp-for="id" class="form-control" />
+
+                        <div class="mb-2">
+                            <label asp-for="categoriesName" class="form-label">Caategory Name: </label>
+                            <input type="text" asp-for="categoriesName" class="form-control" required />
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="categoriesDescrition" class="form-label">Caategory Description: </label>
+                            <input type="text" asp-for="categoriesDescrition" class="form-control" required  />
+                        </div>
+
+                        <div class="mt-5">
+                            <button type="submit" class="btn @(validator ? "btn-outline-success" : "btn-outline-warning")">Save <i class="@(validator ? "bi bi-folder-plus" : "bi bi-pencil-square")"></i></button>
+                            <a class="btn btn-outline-info" asp-controller="Categories" asp-action="Index" required>go back <i class="bi bi-arrow-left-square"></i></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

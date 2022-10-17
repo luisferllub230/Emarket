@@ -19,12 +19,21 @@ namespace E_Market.Core.Application.Services
             _ca = a;
         }
 
-        public async Task Add(CategoriesViewModel cavm)
+        public async Task Add(SaveCategoriesViewModel cavm)
         {
             Categories ca = new();
             ca.categoriesName = cavm.categoriesName;
             ca.categoriesDescrition = cavm.categoriesDescrition;
             await _ca.add(ca);
+        }
+
+        public async Task Update(SaveCategoriesViewModel cavm)
+        {
+            Categories ca = new();
+            ca.id = cavm.id;
+            ca.categoriesName = cavm.categoriesName;
+            ca.categoriesDescrition = cavm.categoriesDescrition;
+            await _ca.update(ca);
         }
 
         public async Task<List<CategoriesViewModel>> GetAll()
@@ -37,6 +46,24 @@ namespace E_Market.Core.Application.Services
                 comercialCount = c.comercials.Count(),
                 comercials = c.comercials,
             }).ToList();
+        }
+
+        public async Task<SaveCategoriesViewModel> GetById(int id)
+        {
+            var category = await _ca.getOne(id);
+
+            SaveCategoriesViewModel scvm = new();
+            scvm.id = category.id;
+            scvm.categoriesName = category.categoriesName;
+            scvm.categoriesDescrition = category.categoriesDescrition;
+
+            return scvm;
+        }
+
+        public async Task Delete(SaveCategoriesViewModel cavm)
+        {
+            var category = await _ca.getOne(cavm.id);
+            await _ca.delete(category);
         }
     }
 }

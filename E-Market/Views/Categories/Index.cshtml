@@ -16,32 +16,49 @@
     }
 }
 
-<table class="table table-striped table-dark">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Category name</th>
-            <th scope="col">Category description</th>
-            <th scope="col">Total comercial</th>
-            <th scope="col">Total comercial Users</th>
-        </tr>
-    </thead>
-    <tbody>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th scope="row">@item.id</th>
-                <td>@item.categoriesName</td>
-                <td>@item.categoriesDescrition</td>
-                <td>@item.comercialCount</td>
-                <td>
-                   @count(item.comercials)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-12 mt-5 mb-3">
+        <a class="btn btn-outline-success" asp-controller="Categories" asp-action="create">Create new Categories <i class="bi bi-plus-square"></i></a>
+    </div>
+    <div class="table-responsive col-12">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Category name</th>
+                    <th scope="col">Category description</th>
+                    <th scope="col">Total comercial</th>
+                    <th scope="col">Total comercial Users</th>
+                    <th scope="col">Opcions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <th scope="row">@item.id</th>
+                        <td>@item.categoriesName</td>
+                        <td>
+                            <div class="text-wrap">
+                                @item.categoriesDescrition
+                            </div>
+                        </td>
+                        <td>@item.comercialCount</td>
+                        <td>
+                           @count(item.comercials)
+                        </td>
+                        <td>
+                            <a asp-controller="Categories" asp-action="Edit" asp-route-id="@item.id" class="me-2 btn btn-outline-warning"><i class="bi bi-pencil-square"></i></a>
+                            <a asp-controller="Categories" asp-action="Delete" asp-route-id="@item.id"  class="btn btn-outline-danger"><i class="bi bi-trash"></i></a> 
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 
