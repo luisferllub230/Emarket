@@ -7,5 +7,8 @@ using System.Threading.Tasks;
 
 namespace E_Market.Core.Application.Interfaces.Services
 {
-    public interface IUsersServices : IGenericServices<UsersViewModel, SaveUsersViewModel>{}
+    public interface IUsersServices : IGenericServices<UsersViewModel, SaveUsersViewModel>
+    {
+        Task<bool> confirmUsersName(SaveUsersViewModel suvm);
+    }
 }

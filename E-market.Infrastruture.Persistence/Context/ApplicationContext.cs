@@ -56,6 +56,10 @@ namespace E_market.Infrastruture.Persistence.Context
                 .IsRequired()
                 .HasMaxLength(50);
 
+            modelBuilder.Entity<Users>().Property(u => u.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+
             modelBuilder.Entity<Users>().Property(u => u.UserLastName)
                 .IsRequired()
                 .HasMaxLength(50);
@@ -66,7 +70,7 @@ namespace E_market.Infrastruture.Persistence.Context
 
             modelBuilder.Entity<Users>().Property(u => u.UsersPasswork)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(100);
 
             modelBuilder.Entity<Users>().Property(u => u.UsersPhone)
                 .IsRequired()

@@ -1,0 +1,96 @@
+﻿@model E_Market.Core.Application.ViewModel.Users.SaveUsersViewModel;
+@{
+    Layout = null;
+    bool validator = ViewBag.validator != null ? true : false;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - E_Market</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="styl esheet" href="~/E_Market.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body class=" bg-dark text-white vh d-flex justify-content-center">
+
+
+    <div class="container mt-5">
+        <main role="main" class="pb-3">
+
+            <div class="d-flex justify-content-center">
+                <div class="col-12 col-md-6">
+                    <div class="card bg-dark border border-5 border-primary">
+
+                        <div class="card-body">
+                            <div class="card-title mt-2 mb-5">
+                                <h1 class="text-center">Register</h1>
+                            </div>
+                            <form method="post" asp-controller="Users" asp-action="UserRegister">
+                                <div class="mb-2">
+                                    <label asp-for="UserName" class="form-label">User Name: </label>
+                                    <input asp-for="UserName" class="form-control" placeholder="your user name"  />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                    <span class="text-danger">@(validator ? "sorry this UserName is in use": "")</span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label asp-for="Name" class="form-label">Name: </label>
+                                    <input asp-for="Name" class="form-control" placeholder="your name" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label asp-for="UserLastName" class="form-label">User Last Name: </label>
+                                    <input asp-for="UserLastName" class="form-control" placeholder="your last name"  />
+                                    <span asp-validation-for="UserLastName" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label asp-for="UsersPhone" class="form-label">User Phone: </label>
+                                    <input asp-for="UsersPhone" class="form-control" placeholder="000-000-0000"  />
+                                    <span asp-validation-for="UsersPhone" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label asp-for="UserEmail" class="form-label">User Email: </label>
+                                    <input asp-for="UserEmail" class="form-control" placeholder="your@email.com"  />
+                                    <span asp-validation-for="UserEmail" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label asp-for="UsersPasswork" class="form-label">Users Password: </label>
+                                    <input asp-for="UsersPasswork" class="form-control" placeholder="Password"  />
+                                    <span asp-validation-for="UsersPasswork" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label asp-for="ConfirmUsersPasswork" class="form-label">Confirm Users Password: </label>
+                                    <input asp-for="ConfirmUsersPasswork" class="form-control" placeholder="Confirm Password"  />
+                                    <span asp-validation-for="ConfirmUsersPasswork" class="text-danger"></span>
+                                </div>
+
+                                <div class="mt-5">
+                                    <button type="submit" class="btn btn-outline-success col-12 mb-2">Register </button>
+                                    <a class="btn btn-outline-primary col-12" asp-controller="Users" asp-action="logging" >go to logging</a>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

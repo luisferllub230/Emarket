@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.vh {
+    height: 100vh;
+    margin-bottom: 0px;
+}

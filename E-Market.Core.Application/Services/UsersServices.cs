@@ -21,45 +21,76 @@ namespace E_Market.Core.Application.Services
             _user = u;
         }
 
-        public async Task Add(UsersViewModel uvm) 
+
+        public async Task<bool> confirmUsersName(SaveUsersViewModel suvm) 
         {
-            Users u = new();
-            u.UserName = uvm.UserName;
-            u.UserLastName = uvm.UserLastName;
-            u.UserEmail = uvm.UserEmail;
-            u.UsersPhone = uvm.UsersPhone;
-            u.UsersPasswork = uvm.UsersPasswork;
-            await _user.add(u);
+            if (await _user.getByString(suvm.UserName)) 
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public Task Add(SaveUsersViewModel cavm)
+        public async Task Add(SaveUsersViewModel suvm)
         {
-            throw new NotImplementedException();
+            Users user = new();
+            user.UserName = suvm.UserName;
+            user.Name = suvm.Name;
+            user.UserLastName = suvm.UserLastName;
+            user.UsersPhone = suvm.UsersPhone;
+            user.UserEmail = suvm.UserEmail;
+            user.UsersPasswork = suvm.UsersPasswork;
+            await _user.add(user);
         }
 
-        public Task Delete(int id)
+        public async Task Update(SaveUsersViewModel suvm)
         {
-            throw new NotImplementedException();
+            Users user = new();
+            user.id = suvm.id;
+            user.UserName = suvm.UserName;
+            user.UserLastName = suvm.UserLastName;
+            user.UsersPhone = suvm.UsersPhone;
+            user.UserEmail = suvm.UserEmail;
+            user.UsersPasswork = suvm.UsersPasswork;
+            await _user.update(user);
         }
 
-        public Task Delete(SaveUsersViewModel cavm)
+        public async Task<List<UsersViewModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var userList = await _user.getAllByInclude(new List<string> { "comercials" });
+
+            return userList.Select(c => new UsersViewModel
+            {
+                id = c.id,
+
+                UserName = c.UserName,
+                UserLastName = c.UserLastName,
+                UsersPhone = c.UsersPhone,
+                UserEmail = c.UserEmail,
+                UsersPasswork = c.UsersPasswork,
+
+            }).ToList();
         }
 
-        public Task<List<UsersViewModel>> GetAll()
+        public async Task<SaveUsersViewModel> GetById(int id)
         {
-            throw new NotImplementedException();
+            var user = await _user.getOne(id);
+
+            SaveUsersViewModel suvm = new();
+            suvm.id = user.id;
+            suvm.UserName = user.UserName;
+            suvm.UserLastName = user.UserLastName;
+            suvm.UsersPhone = user.UsersPhone;
+            suvm.UsersPasswork = user.UsersPasswork;
+
+            return suvm;
         }
 
-        public Task<SaveUsersViewModel> GetById(int id)
+        public async Task Delete(SaveUsersViewModel suvm)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(SaveUsersViewModel cavm)
-        {
-            throw new NotImplementedException();
+            var user = await _user.getOne(suvm.id);
+            await _user.delete(user);
         }
     }
 }
