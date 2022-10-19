@@ -1,6 +1,7 @@
 ﻿using E_market.Infrastruture.Persistence.Context;
 using E_Market.Core.Application.Helper;
 using E_Market.Core.Application.Interfaces.Repositories;
+using E_Market.Core.Application.ViewModel.Users;
 using E_Market.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace E_market.Infrastruture.Persistence.Repositories
 {
@@ -25,6 +27,13 @@ namespace E_market.Infrastruture.Persistence.Repositories
         {
             entity.UsersPasswork = PasswordEncrypted.ComputeSHA256Hash(entity.UsersPasswork);
             await base.add(entity);
+        }
+
+        public async Task<Users> logging(UsersLoggingViewModel entity)
+        {
+            string psw = PasswordEncrypted.ComputeSHA256Hash(entity.UsersPasswork);
+            Users u = await _appContex.Set<Users>().FirstOrDefaultAsync(u => u.UserName == entity.UserName && u.UsersPasswork == psw);
+            return u;
         }
 
         public async Task<bool> getByString(string name)

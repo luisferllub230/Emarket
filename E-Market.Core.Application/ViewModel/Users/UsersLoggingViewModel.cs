@@ -2,7 +2,7 @@
 
 namespace E_Market.Core.Application.ViewModel.Users
 {
-    public class UsersLogging
+    public class UsersLoggingViewModel
     {
         [Required(ErrorMessage = "please check your name")]
         [DataType(DataType.Text)]

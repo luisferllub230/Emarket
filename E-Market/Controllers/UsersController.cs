@@ -2,6 +2,7 @@
 using E_Market.Core.Application.ViewModel.Categories;
 using E_Market.Core.Application.ViewModel.Users;
 using Microsoft.AspNetCore.Mvc;
+using E_Market.Core.Application.Helper;
 
 namespace E_Market.Controllers
 {
@@ -22,14 +23,26 @@ namespace E_Market.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> logging(UsersViewModel uvm)
+        public async Task<IActionResult> logging(UsersLoggingViewModel uvm)
         {
             if (!ModelState.IsValid) 
             {
                 return View(uvm);
             }
 
-            return View();
+            UsersViewModel userVm = await _user.Logging(uvm);
+
+            if (userVm != null)
+            {
+                HttpContext.Session.set<UsersViewModel>("user",userVm);//create session
+                return RedirectToRoute(new { controller = "Home", action = "Index" });
+            }
+            else
+            {
+                ModelState.AddModelError("userValidation", "UserName or password wrong");
+            }
+
+            return View(uvm);
         }
 
         //register

@@ -32,6 +32,27 @@ namespace E_Market.Core.Application.Services
             return false;
         }
 
+        public async Task<UsersViewModel>  Logging(UsersLoggingViewModel suvm)
+        {
+            Users us = await _user.logging(suvm);
+
+            if (us == null) 
+            {
+                return null;
+            }
+
+            UsersViewModel user = new();
+            user.UserName = us.UserName;
+            user.Name = us.Name;
+            user.UserLastName = us.UserLastName;
+            user.UsersPhone = us.UsersPhone;
+            user.UserEmail = us.UserEmail;
+            user.UsersPasswork = us.UsersPasswork;
+            
+
+            return user;
+        }
+
         public async Task Add(SaveUsersViewModel suvm)
         {
             Users user = new();

@@ -10,5 +10,6 @@ namespace E_Market.Core.Application.Interfaces.Services
     public interface IUsersServices : IGenericServices<UsersViewModel, SaveUsersViewModel>
     {
         Task<bool> confirmUsersName(SaveUsersViewModel suvm);
+        Task<UsersViewModel> Logging(UsersLoggingViewModel suvm);
     }
 }

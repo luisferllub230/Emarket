@@ -1,4 +1,4 @@
-﻿@model E_Market.Core.Application.ViewModel.Users.UsersLogging;
+﻿@model E_Market.Core.Application.ViewModel.Users.UsersLoggingViewModel;
 
 @{
     Layout = null;
@@ -30,6 +30,7 @@
                             <div class="card-title mt-2 mb-5">
                                <h1 class="text-center">Logging</h1>
                             </div>
+                            @Html.ValidationSummary(false,"", new {@class = "text-danger"})
                             <form method="post" asp-controller="Users" asp-action="logging">
                                 <div class="mb-2">
                                     <label asp-for="UserName" class="form-label">User Name: </label>

@@ -1,4 +1,5 @@
 using E_Market.Core.Application;
+using E_Market.Midelware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPersistenceInfrastruture(builder.Configuration);
 builder.Services.AddApplicationLayer();
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<UserSessionValidationcs, UserSessionValidationcs>();
 
 var app = builder.Build();
 
@@ -16,6 +20,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
