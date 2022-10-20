@@ -16,6 +16,6 @@ namespace E_Market.Core.Domain.Entities
         public string? categoriesName { get; set; }
         public string? categoriesDescrition { get; set; }
 
-        public virtual ICollection<Comercial> comercials { get; set; }
+        public virtual ICollection<Comercial>? comercials { get; set; }
     }
 }

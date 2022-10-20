@@ -23,10 +23,10 @@ namespace E_market.Infrastruture.Persistence.Repositories
             _appContex = Dbcontext;
         }
 
-        public override async Task add(Users entity)
+        public override async Task<Users> add(Users entity)
         {
             entity.UsersPasswork = PasswordEncrypted.ComputeSHA256Hash(entity.UsersPasswork);
-            await base.add(entity);
+            return await base.add(entity);
         }
 
         public async Task<Users> logging(UsersLoggingViewModel entity)

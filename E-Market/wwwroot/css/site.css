@@ -21,3 +21,9 @@ body {
     height: 100vh;
     margin-bottom: 0px;
 }
+
+.mini-Img{
+    object-fit:cover;
+    max-height:300px;
+    max-width: 300px;
+}

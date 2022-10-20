@@ -16,6 +16,7 @@ namespace E_Market.Core.Application
             #region repositories
             services.AddTransient<IUsersServices, UsersServices>();
             services.AddTransient<ICategoriesServices, CategoriesServices>();
+            services.AddTransient<IComercialServices, ComercialService>();
             #endregion
         }
     }

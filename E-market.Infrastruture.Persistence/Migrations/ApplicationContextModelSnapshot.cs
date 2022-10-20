@@ -85,6 +85,10 @@ namespace E_market.Infrastruture.Persistence.Migrations
                     b.Property<int>("comercialUsersID")
                         .HasColumnType("int");
 
+                    b.Property<float>("price")
+                        .HasMaxLength(50)
+                        .HasColumnType("real");
+
                     b.HasKey("id");
 
                     b.HasIndex("comercialCategoriesID");

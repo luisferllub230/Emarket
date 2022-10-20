@@ -1,0 +1,80 @@
+﻿@model E_Market.Core.Application.ViewModel.Comercials.SaveComercialViewModel;
+@{
+    bool validator = Model.id == 0 ? true : false; // true Create, flase edit
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-6">
+        <div class="card bg-dark border border-5 @(validator ? "border-success" : "border-warning")">
+            <div class="card-body">
+                <div class="card-title mt-2 mb-4">
+                    <h4 class="text-center">@(validator ? "Create new Comercial" : "Edit " + Model.comercialName + " ")</h4>
+                </div>
+                <div class="">
+                    <form method="post" enctype="multipart/form-data" asp-controller="Comercial" asp-action="@(validator ? "Create" : "Edit")">
+
+                        <input type="hidden" asp-for="id" class="form-control" />
+
+                        <div class="mb-2">
+                            <label asp-for="comercialName" class="form-label">Comercial Name: </label>
+                            <input asp-for="comercialName" class="form-control" required />
+                            <span asp-validation-for="comercialName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="comercialDesciption" class="form-label">Comercial Description: </label>
+                            <input asp-for="comercialDesciption" class="form-control" required />
+                            <span asp-validation-for="comercialDesciption" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="file1" class="form-label">Select a principal img: </label>
+                            @if (validator)
+                            {
+                                <input accept="image/*" asp-for="file1" class="form-control" required/>
+                            }else
+                            {
+                                    <input accept="image/*" asp-for="file1" class="form-control"/>
+                            }
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="file2" class="form-label">Select an img 2: </label>
+                            <input  accept="image/*" asp-for="file2" class="form-control" />
+                        </div>
+
+                         <div class="mb-2">
+                            <label asp-for="file3" class="form-label">Select an img 3: </label>
+                            <input accept="image/*" asp-for="file3" class="form-control" />
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="file4" class="form-label">Select an img 4: </label>
+                            <input  accept="image/*" asp-for="file4" class="form-control" />
+                        </div>
+
+
+                        <div class="mb-2">
+                            <label asp-for="price" class="form-label">Incert a price: </label>
+                            <input type="number" asp-for="price" class="form-control" required />
+                            <span asp-validation-for="price" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="comercialCategoriesID" class="form-label">Incert a price: </label>
+                            <select asp-for="comercialCategoriesID" asp-items="@(new SelectList(Model.categories,"id","categoriesName"))" class="form-select" required>
+                                <option value="0" selected>Select a category</option>
+                            </select>
+                            <span asp-validation-for="comercialCategoriesID" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-5">
+                            <button type="submit" class="btn @(validator ? "btn-outline-success" : "btn-outline-warning")">Save <i class="@(validator ? "bi bi-folder-plus" : "bi bi-pencil-square")"></i></button>
+                            <a class="btn btn-outline-info" asp-controller="Comercial" asp-action="Index">go back <i class="bi bi-arrow-left-square"></i></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

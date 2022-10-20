@@ -42,6 +42,7 @@ namespace E_Market.Core.Application.Services
             }
 
             UsersViewModel user = new();
+            user.id = us.id;
             user.UserName = us.UserName;
             user.Name = us.Name;
             user.UserLastName = us.UserLastName;
@@ -53,7 +54,7 @@ namespace E_Market.Core.Application.Services
             return user;
         }
 
-        public async Task Add(SaveUsersViewModel suvm)
+        public async Task<SaveUsersViewModel> Add(SaveUsersViewModel suvm)
         {
             Users user = new();
             user.UserName = suvm.UserName;
@@ -62,12 +63,24 @@ namespace E_Market.Core.Application.Services
             user.UsersPhone = suvm.UsersPhone;
             user.UserEmail = suvm.UserEmail;
             user.UsersPasswork = suvm.UsersPasswork;
-            await _user.add(user);
+
+            user = await _user.add(user);
+
+            SaveUsersViewModel sc = new SaveUsersViewModel();
+            sc.id = user.id;
+            sc.UserName = user.UserName;
+            sc.Name = user.Name;
+            sc.UserLastName = user.UserLastName;
+            sc.UsersPhone = user.UsersPhone;
+            sc.UserEmail = user.UserEmail;
+            sc.UsersPasswork = user.UsersPasswork;
+
+            return sc;
         }
 
         public async Task Update(SaveUsersViewModel suvm)
         {
-            Users user = new();
+            Users user = await _user.getOne(suvm.id);
             user.id = suvm.id;
             user.UserName = suvm.UserName;
             user.UserLastName = suvm.UserLastName;

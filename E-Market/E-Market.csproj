@@ -22,4 +22,8 @@
     <ProjectReference Include="..\E-market.Infrastruture.Persistence\E-market.Infrastruture.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\comercials\" />
+  </ItemGroup>
+
 </Project>

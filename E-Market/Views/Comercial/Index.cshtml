@@ -1,0 +1,62 @@
+﻿@using E_Market.Core.Application.ViewModel.Categories;
+@model List<E_Market.Core.Application.ViewModel.Comercials.ComercialViewModel>;
+
+@{
+    var cat =  ViewBag.Categories;
+}
+
+@functions {
+    string getComercial(int comercialCategoriesId, List<CategoriesViewModel> categories)
+    {
+        string categoryName="";
+
+        foreach (var i in categories)
+        {
+            if (comercialCategoriesId == i.id) 
+            {
+                categoryName = $"{i.categoriesName}";
+            }
+        }
+
+        return categoryName;
+    }
+}
+
+<div class="row">
+    <div class="col-12 mt-5 mb-3">
+        <a class="btn btn-outline-success" asp-controller="Comercial" asp-action="Create">Create new Comercial <i class="bi bi-plus-square"></i></a>
+    </div>
+    <div class="table-responsive col-12">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Comercial img</th>
+                    <th scope="col">Comercial name</th>
+                    <th scope="col">Comercial Description</th>
+                    <th scope="col">Comericial Prise</th>
+                    <th scope="col">Comericial Categories</th>
+                    <th scope="col">Opcions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <th scope="row">@item.id</th>
+                        <td><img src="@item.comercialImage1" class="mini-Img" /></td>
+                        <td>@item.comercialName</td>
+                        <td class="text-wrap">@item.comercialDesciption</td>
+                        <td>@item.price</td>
+                        <td>@getComercial(item.comercialCategoriesID, cat)</td>
+                        <td>
+                            <a asp-controller="Comercial" asp-action="Edit" asp-route-id="@item.id" class="me-2 btn btn-outline-warning"><i class="bi bi-pencil-square"></i></a>
+                            <a asp-controller="Comercial" asp-action="Delete" asp-route-id="@item.id" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

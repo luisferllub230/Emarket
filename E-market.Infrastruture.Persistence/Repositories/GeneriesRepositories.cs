@@ -23,10 +23,11 @@ namespace E_market.Infrastruture.Persistence.Repositories
             _contex = c;
         }
 
-        public virtual async Task add(Entity entity)
+        public virtual async Task<Entity> add(Entity entity)
         {
             await _contex.Set<Entity>().AddAsync(entity);
             await _contex.SaveChangesAsync();
+            return entity;
         }
 
         public virtual async Task delete(Entity entity)

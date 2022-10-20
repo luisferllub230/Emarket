@@ -22,6 +22,7 @@ namespace E_Market.Core.Domain.Entities
         public DateTime comercialDate { get; set; }
         public int comercialCategoriesID { get; set; }
         public int comercialUsersID { get; set; }
+        public float price { get; set; }
 
         [ForeignKey("comercialCategoriesID")]
         public virtual Categories? comercialCategories { get; set; }

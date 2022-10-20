@@ -1,7 +1,11 @@
-﻿using E_Market.Core.Application.Interfaces.Repositories;
+﻿using E_Market.Core.Application.Helper;
+using E_Market.Core.Application.Interfaces.Repositories;
 using E_Market.Core.Application.Interfaces.Services;
 using E_Market.Core.Application.ViewModel.Categories;
+using E_Market.Core.Application.ViewModel.Comercials;
+using E_Market.Core.Application.ViewModel.Users;
 using E_Market.Core.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +16,33 @@ namespace E_Market.Core.Application.Services
 {
     public class CategoriesServices : ICategoriesServices
     {
-        private ICategoriesRepositories _ca;
-
+        private readonly ICategoriesRepositories _ca;
+      
         public CategoriesServices(ICategoriesRepositories a) 
         {
             _ca = a;
         }
 
-        public async Task Add(SaveCategoriesViewModel cavm)
+        public async Task<SaveCategoriesViewModel> Add(SaveCategoriesViewModel cavm)
         {
             Categories ca = new();
             ca.categoriesName = cavm.categoriesName;
             ca.categoriesDescrition = cavm.categoriesDescrition;
-            await _ca.add(ca);
+            
+
+            ca = await _ca.add(ca); 
+
+            SaveCategoriesViewModel sc = new SaveCategoriesViewModel();
+            sc.id = ca.id;
+            sc.categoriesName = ca.categoriesName;
+            sc.categoriesDescrition = ca.categoriesDescrition;
+
+            return sc;
         }
 
         public async Task Update(SaveCategoriesViewModel cavm)
         {
-            Categories ca = new();
+            Categories ca = await _ca.getOne(cavm.id);
             ca.id = cavm.id;
             ca.categoriesName = cavm.categoriesName;
             ca.categoriesDescrition = cavm.categoriesDescrition;

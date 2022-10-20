@@ -82,6 +82,10 @@ namespace E_market.Infrastruture.Persistence.Context
                 .IsRequired()
                 .HasMaxLength(50);
 
+            modelBuilder.Entity<Comercial>().Property(c => c.price)
+                .IsRequired()
+                .HasMaxLength(50);
+
             modelBuilder.Entity<Comercial>().Property(c => c.comercialDesciption)
                 .IsRequired()
                 .HasMaxLength(50);

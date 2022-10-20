@@ -11,7 +11,7 @@ namespace E_Market.Core.Application.Interfaces.Services
         where Entity : class
         where ViewModel : class
     {
-        Task Add(ViewModel cavm);
+        Task<ViewModel> Add(ViewModel cavm);
         Task Update(ViewModel cavm);
         Task<List<Entity>> GetAll();
         Task<ViewModel> GetById(int id);

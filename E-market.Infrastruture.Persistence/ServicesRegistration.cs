@@ -34,6 +34,7 @@ namespace E_Market.Core.Application
             services.AddTransient(typeof(IGenericRepositories<>), typeof(GeneriesRepositories<>));
             services.AddTransient<IUsersRepositories, UsersRepositories>();
             services.AddTransient<ICategoriesRepositories, CategoriesRepositories>();
+            services.AddTransient<IComercialRepositories, ComercialRepositories>();
             #endregion
         }
     }
