@@ -1,4 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using E_Market.Core.Application.ViewModel.Categories;
+@model List<E_Market.Core.Application.ViewModel.Comercials.ComercialViewModel>;
+
+@{
+    var cat = ViewBag.Categories;
 }
+
+@functions {
+    string getComercial(int comercialCategoriesId, List<CategoriesViewModel> categories)
+    {
+        string categoryName = "";
+
+        foreach (var i in categories)
+        {
+            if (comercialCategoriesId == i.id)
+            {
+                categoryName = $"{i.categoriesName}";
+            }
+        }
+
+        return categoryName;
+    }
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="col-12 mt-5 mb-3 d-flex justify-content-center">
+        <a class="btn btn-outline-success">Search by name and categories</a>
+    </div>
+
+    @foreach (var item in Model)
+    {
+            <div class="card bg-dark border border-5 border-info m-2 p-0" style="width: 15rem;">
+            <a asp-controller="Home" asp-action="Details" asp-route-id="@item.id" class="m-0 p-0">
+                <img class="card-img-top img-fluid" src="@item.comercialImage1" alt="Card image cap">
+                <div class="card-body m-2">
+                    <h4>Name: @item.comercialName</h4>
+                    <p class="card-text">Description: @item.comercialDesciption</p>
+                    <p class="card-text">Categorie: @getComercial(item.comercialCategoriesID, cat)</p>
+                    <span>Price: @item.price</span>
+                </div>
+                </a>
+            </div>
+    }
+</div>
 

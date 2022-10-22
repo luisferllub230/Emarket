@@ -9,5 +9,6 @@ namespace E_Market.Core.Application.Interfaces.Services
 {
     public interface IComercialServices : IGenericServices<ComercialViewModel, SaveComercialViewModel>
     {
+        Task<List<ComercialViewModel>> GetAllExcludingUser();
     }
 }

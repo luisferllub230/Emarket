@@ -3,11 +3,6 @@ using E_Market.Core.Application.Interfaces.Services;
 using E_Market.Core.Application.ViewModel.Categories;
 using E_Market.Core.Application.ViewModel.Users;
 using E_Market.Core.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Market.Core.Application.Services
 {
@@ -117,6 +112,7 @@ namespace E_Market.Core.Application.Services
             suvm.UserLastName = user.UserLastName;
             suvm.UsersPhone = user.UsersPhone;
             suvm.UsersPasswork = user.UsersPasswork;
+            suvm.UserEmail = user.UserEmail;
 
             return suvm;
         }

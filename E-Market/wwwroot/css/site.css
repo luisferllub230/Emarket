@@ -27,3 +27,16 @@ body {
     max-height:300px;
     max-width: 300px;
 }
+
+a {
+    text-decoration:none;
+}
+
+img {
+    height:auto;
+    width:auto;
+    object-fit:cover;
+    overflow:hidden;
+    max-height:500px;
+    min-height:200px;
+}

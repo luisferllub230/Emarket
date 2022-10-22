@@ -101,6 +101,26 @@ namespace E_Market.Core.Application.Services
             }).ToList();
         }
 
+        public async Task<List<ComercialViewModel>> GetAllExcludingUser()
+        {
+            var comercialList = await _IcomercialR.getAll();
+            return comercialList.Where(c => c.comercialUsersID != _userViewModel.id).Select(c => new ComercialViewModel
+            {
+                id = c.id,
+                comercialName = c.comercialName,
+                comercialDate = c.comercialDate,
+                comercialImage1 = c.comercialImage1,
+                comercialImage2 = c.comercialImage2,
+                comercialImage3 = c.comercialImage3,
+                comercialImage4 = c.comercialImage4,
+                comercialCategoriesID = c.comercialCategoriesID,
+                comercialDesciption = c.comercialDesciption,
+                comercialUserID = _userViewModel.id,
+                price = c.price,
+
+            }).ToList();
+        }
+
         public async Task<SaveComercialViewModel> GetById(int id)
         {
             var c = await _IcomercialR.getOne(id);
@@ -114,6 +134,7 @@ namespace E_Market.Core.Application.Services
             scvm.comercialImage3 = c.comercialImage3;
             scvm.comercialImage4 = c.comercialImage4;
             scvm.comercialCategoriesID = c.comercialCategoriesID;
+            scvm.comercialUserID = c.comercialUsersID;
             scvm.comercialDesciption = c.comercialDesciption;
             scvm.price = c.price;
 

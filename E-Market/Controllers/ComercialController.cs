@@ -159,6 +159,7 @@ namespace E_Market.Controllers
                 return RedirectToRoute(new { controller = "Users", action = "logging" });
             }
 
+
             return View(await _cm.GetById(id));
         }
 

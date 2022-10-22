@@ -1,4 +1,5 @@
 ﻿using E_Market.Core.Application.ViewModel.Categories;
+using E_Market.Core.Application.ViewModel.Users;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,16 @@ namespace E_Market.Core.Application.ViewModel.Comercials
         [Range(1, int.MaxValue,ErrorMessage = "please check your comercial categorie")]
         public int comercialCategoriesID { get; set; }
 
+        public int comercialUserID { get; set; }
+
         public List<CategoriesViewModel> categories { get; set; }
+        public List<UsersViewModel> user { get; set; }
+
+        public string categoryName { get; set; }
+        public string userName { get; set; }
+        public string userPhone { get; set; }
+        public string userEmail { get; set; }
+
 
         [DataType(DataType.Upload)]
         public IFormFile file1 { get; set; }
